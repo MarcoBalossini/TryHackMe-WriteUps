@@ -2,7 +2,7 @@
 [![Needed-Gobuster](https://img.shields.io/badge/Needed-Gobuster-orange)](https://github.com/OJ/gobuster)
 
 # Pickle Rick
-*"This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle."*
+[*"This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle."*](https://tryhackme.com/room/picklerick)
 
 ## Reconnaissance
 We start by scanning Rick's computer with nmap in order to identify running services:
