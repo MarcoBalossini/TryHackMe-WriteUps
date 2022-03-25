@@ -1,4 +1,6 @@
-
+[![Needed-nmap](https://img.shields.io/badge/Needed-nmap-blue)](https://nmap.org/)
+[![Needed-Gobuster](https://img.shields.io/badge/Needed-Gobuster-orange)](https://github.com/OJ/gobuster)
+[![Needed-Hydra](https://img.shields.io/badge/Needed-Hydra-green)](https://github.com/vanhauser-thc/thc-hydra)
 
 # Mr Robot CTF
 *Can you root this Mr. Robot styled machine? This is a virtual machine meant for beginners/intermediate users. There are 3 hidden keys located on the machine, can you find them?*
