@@ -1,5 +1,6 @@
 [![Needed-nmap](https://img.shields.io/badge/Needed-nmap-blue)](https://nmap.org/)
 [![Needed-Gobuster](https://img.shields.io/badge/Needed-Gobuster-orange)](https://github.com/OJ/gobuster)
+[![Needed-John](https://img.shields.io/badge/Needed-John-red)](https://github.com/openwall/john)
 
 # Daily Bugle
 *Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges by taking advantage of yum.*
